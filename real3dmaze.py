@@ -117,13 +117,13 @@ def a_star(graph, start, finish):
     current = None
 
     while current != graph[ ( finish ) ]:
-        current = min( open, key = lambda cell: cell['f_cost'] )
+        current = min( open, key = lambda cell: cell[ 'f_cost' ] )
         open.remove( current )
         current[ 'visited' ] = True
 
-        for neighbor in current['neighbors']:
+        for neighbor in current[ 'neighbors' ]:
             
-            if graph[neighbor]['visited'] == True:
+            if graph[ neighbor ][ 'visited' ] == True:
                 continue
 
             path_to_neigh = current[ 'g_cost' ] + round( 
@@ -139,8 +139,8 @@ def a_star(graph, start, finish):
                         ( finish[0] - neighbor['pos'][0] )**2 + ( finish[1] - neighbor['pos'][1] )**2 + ( finish[2] - neighbor['pos'][2] )**2 ) * 10 
                     , 0 )
                 neighbor[ 'g_cost' ] = path_to_neigh
-                neighbor[ 'f_cost']
-                neighbor['parent'] = current['pos']
+ 
+                neighbor[ 'parent' ] = current[ 'pos' ]
 
                 if neighbor not in open:
                     open.append(neighbor)
